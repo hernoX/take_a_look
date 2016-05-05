@@ -1,0 +1,39 @@
+<form novalidate name="someUserForm" ng-submit="controllerAs.someSubmissionMethod()" role="form">
+
+    <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text"
+          name="firstName"
+          id="firstName"
+          class="form-control"
+          ng-model="controllerAs.user.firstName"
+          ng-pattern="controllerAs.regex.text"
+          required />
+        <div class="help-box">
+          <div ng-if="someUserForm.firstName.$dirty" ng-messages="someUserForm.firstName.$error" role="alert">
+            <div ng-messages-include="app/templates/messages.template.html"></div>
+          </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last name</label>
+        <input type="text"
+          name="lastName"
+          id="Text1"
+          class="form-control"
+          ng-pattern="controllerAs.regex.text"
+          ng-model="controllerAs.user.lastName"
+          required />
+        <div class="help-box">
+          <div ng-if="someUserForm.lastName.$dirty" ng-messages="someUserForm.lastName.$error" role="alert">
+            <div ng-messages-include="app/templates/messages.template.html"></div>
+          </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" ng-disabled="someUserForm.$invalid || controllerAs.dataLoading" class="btn btn-primary">Submit Form</button>
+        <a href="#/login" class="btn btn-link">Cancel</a>
+    </div>
+
+  </form>
